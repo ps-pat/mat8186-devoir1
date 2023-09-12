@@ -274,5 +274,52 @@ utiliser de boucle <code>for</code></em>.</p></li>
 sera court!</p>
 <p>Quelque réalisations pour référence: <img src="q1.png"
 alt="image" /></p>
+<h1 class="unnumbered" id="exercice-2">Exercice 2</h1>
+<p>Pour un ensemble <span class="math inline">\bm{x} = \left\{ x_1, x_2,
+\ldots \right\}</span>, soit <span class="math display">\bm{x}_{\alpha}
+= \{ x \in \bm{x} : x &gt; q_{\alpha}(\bm{x}) \}</span> où <span
+class="math inline">q_{\alpha}(\bm{x})</span> est le quantile d’ordre
+<span class="math inline">\alpha</span> de <span
+class="math inline">\bm{x}</span>. On définit la statistique <span
+class="math display">T_{\alpha}(\bm{x}) = \frac{1}{| \bm{x}_{\alpha} |}
+\sum_{\{ x \in \bm{x}_{\alpha} \}} x</span></p>
+<p>Implémentez la fonction
+<code>ex2(x, alphas = seq(0, 0.99, 0.01))</code> qui calcule cette
+statistique pour un ensemble de <span class="math inline">\alpha</span>
+donné.</p>
+<p>Pour référence, <code>ex2</code> appliquée aux exemples précédents.
+<img src="q2.png" alt="image" /></p>
+<h1 class="unnumbered" id="exercice-3">Exercice 3</h1>
+<p>Soit la famille de vecteurs définie par <span
+class="math display">\bm{x}_t = ((t \!\!\!\!\mod 2) + 1) \bm{x}_{t - 1}
+{\bm{x}}^\intercal_{t - 1} \bm{v} \mod 8191</span> pour un vecteur <span
+class="math inline">\bm{v}</span> compatible donné. On veut générer un
+(mauvais ?) nombre aléatoire entre 0 et 1 de la manière suivante:</p>
+<ol>
+<li><p>choisir <span class="math inline">n</span> entiers <span
+class="math inline">x_1, \ldots x_n</span> et définir <span
+class="math inline">\bm{x}_0 = {(x_1 \cdots
+x_n)}^\intercal</span>;</p></li>
+<li><p>choisir 1 entier <span class="math inline">v_1</span> et définir
+<span class="math inline">\bm{v} = {(v_1\, (v_1 + 1)\, \cdots (v_1 + n -
+1))}^\intercal</span>;</p></li>
+<li><p>appliquer la récurrence ci-haut 1000 fois;</p></li>
+<li><p>retourner <span
+class="math display">\frac{{\bm{x}}^\intercal_{1000} \bm{x}_{1000} \mod
+100}{100}.</span></p></li>
+</ol>
+<p>Implémentez cet algorithme dans une fonction nommée
+<code>cheaprng(..., v1 = 1)</code>.</p>
+<p>Quelques valeurs:</p>
+<ul>
+<li><p><span class="math inline">\bm{x}_0 = (10, 2, 45, 54, 55, 1000,
+12, 18, 5), v_1 = 1 \mapsto 0.24</span></p></li>
+<li><p><span class="math inline">\bm{x}_0 = (10, 2, 45, 54, 55, 1000,
+12, 18, 5), v_1 = 1234 \mapsto 0.25</span></p></li>
+<li><p><span class="math inline">\bm{x}_0 = (10), v_1 = 1 \mapsto
+0.00</span></p></li>
+<li><p><span class="math inline">\bm{x}_0 = (10, 18), v_1 = 1 \mapsto
+0.54</span></p></li>
+</ul>
 </body>
 </html>
