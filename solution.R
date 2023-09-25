@@ -2,7 +2,10 @@
 
 ## (a)
 w_vec <- function(n, m = 1, p = 0.5)
-    atan(cumsum(c(0, (m * p * rbinom(n - 1, m, p) - m * p * p))))
+    Reduce(\(a, b) atan(a + m * p * b - m * p * p),
+           rbinom(n - 1, m, p),
+           init = 0,
+           accumulate = TRUE)
 
 ## (b)
 w_for <- function(n, m = 1, p =  0.5) {
@@ -11,9 +14,9 @@ w_for <- function(n, m = 1, p =  0.5) {
     res <- numeric(n)
     res[[1]] <- 0
     for (k in seq_along(w))
-        res[[k + 1]] <- res[[k]] + m * p * w[[k]] - m * p * p
+        res[[k + 1]] <- atan(res[[k]] + m * p * w[[k]] - m * p * p)
 
-    atan(res)
+    res
 }
 
 ## Graphiques!
