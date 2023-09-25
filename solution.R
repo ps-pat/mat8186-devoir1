@@ -51,10 +51,9 @@ for (traj in trajs)
 ### Exercice 3
 
 cheaprng <- function(..., v1 = 1) {
-
     x <- as.numeric(list(...))
     n <- length(x)
-    v <- seq(v1, by =  1, length =  n)
+    v <- seq(v1, by = 1, length = n)
 
     for (k in 1:1000)
         x <- ((((k %% 2) + 1) * tcrossprod(x)) %*% v) %% 8191
